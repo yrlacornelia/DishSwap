@@ -6,7 +6,8 @@ export const fetchMeals = async (numMeals) => {
         const response = await fetch(""
         );
         const data = await response.json();
-        fetchedMeals.push(data.meals);
+        fetchedMeals.push(data.meals[0]);
+ 
       }
       return fetchedMeals;
     } catch (error) {

@@ -2,6 +2,7 @@
 import OneMeal from "../../components/game/meal";
 import meals, { Meal } from "../../lib/data";
 import { GetStaticPaths, GetStaticProps } from "next";
+//instead here we dont want props this we take from storage 
 type Props = {
   item: Meal;
 };

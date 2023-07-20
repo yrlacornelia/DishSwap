@@ -24,17 +24,26 @@ const Settings = () => {
     };
 
     saveToLocalStorage('playerMealData', data);
-
+// {arrray &&
+//         arrray.map((type) => (
+//           <>
+//      <p>hleo {type.strMeal}</p>
+   
+      
+   
+//           </>
+//         ))}
     try {
       const mealArray = await fetchMeals(numMeals);
-      console.log(mealArray);
-
       const randomMealNames = getRandomMealNames(meals, numMeals);
-      saveToLocalStorage('meals', randomMealNames);
-      saveToLocalStorage('test', mealArray);
+      console.log(mealArray)
+      saveToLocalStorage('test', randomMealNames);
+      saveToLocalStorage('meals', mealArray);
+// mealArray.map =>
+  const nextMeal = mealArray[0];
+      console.log(nextMeal.strMeal)
 
-      const nextMeal = randomMealNames[0];
-      // window.location.href = `/game/${nextMeal}`;
+   window.location.href = `/game/${encodeURI(nextMeal.strMeal)}`;
     } catch (error) {
       console.error("Error fetching results:", error);
     }
