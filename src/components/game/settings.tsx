@@ -24,51 +24,19 @@ const Settings = () => {
     };
 
     saveToLocalStorage('playerMealData', data);
-// {arrray &&
-//         arrray.map((type) => (
-//           <>
-//      <p>hleo {type.strMeal}</p>
-   
-      
-   
-//           </>
-//         ))}
     try {
       const mealArray = await fetchMeals(numMeals);
-      const randomMealNames = getRandomMealNames(meals, numMeals);
       console.log(mealArray)
-      saveToLocalStorage('test', randomMealNames);
       saveToLocalStorage('meals', mealArray);
 // mealArray.map =>
   const nextMeal = mealArray[0];
       console.log(nextMeal.strMeal)
 
-   window.location.href = `/game/${encodeURI(nextMeal.strMeal)}`;
+   window.location.href = `/game/test`;
     } catch (error) {
       console.error("Error fetching results:", error);
     }
   };
-
-  // Function to get random MealName values
-  function getRandomMealNames(meals: Meal[], count: number) {
-    const randomMealNames = [];
-  
-    // Generate unique random indexes
-    const indexes = [];
-    while (indexes.length < count) {
-      const randomIndex = Math.floor(Math.random() * meals.length);
-      if (!indexes.includes(randomIndex)) {
-        indexes.push(randomIndex);
-      }
-    }
-  
-    // Get the MealName values at the random indexes
-    for (const index of indexes) {
-      randomMealNames.push(meals[index].MealName);
-    }
-  
-    return randomMealNames;
-  }
 
   return (
     <div>
