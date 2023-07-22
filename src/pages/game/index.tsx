@@ -1,11 +1,9 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react'
-import meals from '../../lib/data';
 import { getRandomMeal } from '../../utils/utils';
 export default function Game() {
 
-  const randomMeal = getRandomMeal(meals);
 
   return (
     

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { saveToLocalStorage } from '../../utils/LocalStorageUtils';
-import meals, { Meal } from '../../lib/data';
 import { fetchMeals } from '../../utils/fetchUtils';
 
 const Settings = () => {
