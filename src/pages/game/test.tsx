@@ -1,54 +1,63 @@
 
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { loadFromLocalStorage, saveToLocalStorage } from "../../utils/LocalStorageUtils";
-import NextButton from "../../components/game/nextButton";
+import NextButton from "../../components/reusableComponents/Button";
 import { MyObject, emptyMyObject } from "../../lib/data";
 
 export default function Test() {
-  const [resultArray, setResultArray] = useState<string[]>([]);
-  const [playersFinished, setPlayersFinished] = useState(0);
-  const [array, setArray] = useState<number>(0);
-  const [testa, setTesta] = useState<MyObject[]>([]); // Provide default value here
-  const [selectedObjectIndex, setSelectedObjectIndex] = useState<number>(0);
+  const [results, setResults] = useState<string[]>([]);
+  const [numPlayersFinished, setNumPlayersFinished] = useState(0);
+  const [arrayLength, setArrayLength] = useState<number>(0);
+  const [myObjectArray, setMyObjectArray] = useState<MyObject[]>([]); // Provide default value here
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  console.log(selectedObjectIndex);
-  console.log(array);
-  const hi = () => {
-    if (selectedObjectIndex === array) {
-      setPlayersFinished(playersFinished + 1);
-      alert("Game over!");
-      setSelectedObjectIndex(0); // Reset total for the next player
-    }
+  const initialRender = useRef(true); // Create a ref to track the initial render
+
+  console.log(currentIndex);
+  console.log(arrayLength);
+
+  const handleNext = () => {
+    setCurrentIndex(currentIndex + 1);
+    // Your logic for "hi()" function here if needed
   };
 
   useEffect(() => {
+    console.log("Loading data from local storage...");
     const localStorageArray = loadFromLocalStorage("meals");
-    setArray(localStorageArray.length);
-    setTesta(localStorageArray); // Setting the whole array here
-    setSelectedObjectIndex(0); // Resetting selectedObjectIndex when array updates
+    setArrayLength(localStorageArray.length);
+    setMyObjectArray(localStorageArray); // Setting the whole array here
+    setCurrentIndex(0); // Resetting currentIndex when array updates
   }, []);
 
-  const selectedObject: MyObject = testa[selectedObjectIndex];
-  const handleNextClick = () => {
-    setSelectedObjectIndex(selectedObjectIndex + 1);
-    hi();
-  };
+  const selectedObject: MyObject = myObjectArray[currentIndex];
 
   const handleYesClick = () => {
-    setResultArray((prevArray) => [...prevArray, selectedObject?.strMeal || ""]);
-    handleNextClick();
+    setResults((prevResults) => [...prevResults, selectedObject?.strMeal || ""]);
+    handleNext();
   };
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      if (currentIndex === arrayLength) {
+        setNumPlayersFinished(numPlayersFinished + 1);
+        alert("Game over!");
+        setCurrentIndex(0); // Reset currentIndex for the next player
+      }
+    }
+  }, [currentIndex, arrayLength]);
 
   useEffect(() => {
     const players = loadFromLocalStorage("playerMealData");
-    if (playersFinished === players.numPlayers) {
+    if (numPlayersFinished === players.numPlayers) {
       alert("Game over!");
-      saveToLocalStorage("results", resultArray);
+      saveToLocalStorage("results", results);
       window.location.href = `/game/endGame`;
-      setSelectedObjectIndex(0); // Reset for the next player
+      setCurrentIndex(0); // Reset currentIndex for the next player
     }
-  }, [playersFinished, resultArray]); // Add resultArray to the dependency array
+  }, [numPlayersFinished, results]); // Add results to the dependency array
 
   return (
     <div>
@@ -57,9 +66,8 @@ export default function Test() {
         <p>måltid: bild</p>
         {selectedObject?.strMeal}
         <NextButton onNextClick={handleYesClick} title={"yes"} />
-        <NextButton onNextClick={handleNextClick} title={"no"} />
+        <NextButton onNextClick={handleNext} title={"no"} />
       </>
     </div>
   );
 }
-

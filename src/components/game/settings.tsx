@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { saveToLocalStorage } from '../../utils/LocalStorageUtils';
 import { fetchMeals } from '../../utils/fetchUtils';
+import NextButton from '../reusableComponents/Button';
+import Input from '../reusableComponents/inputfield';
 
 const Settings = () => {
   const [numPlayers, setNumPlayers] = useState<number>(1);
@@ -59,7 +61,8 @@ const Settings = () => {
           onChange={handleNumMealsChange}
         />
       </label>
-      <button onClick={handleSave}>starta</button>  
+    <Input/>
+      <NextButton title={"starta"}   onNextClick={handleSave}/>
     </div>
   );
 };
