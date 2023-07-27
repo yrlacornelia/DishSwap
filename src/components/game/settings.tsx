@@ -8,11 +8,15 @@ const Settings = () => {
   const [numPlayers, setNumPlayers] = useState<number>(1);
   const [numMeals, setNumMeals] = useState<number>(1);
 
-  const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(event.target.value, 10);
-    setNumPlayers(value);
+  // const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const value = parseInt(event.target.value, 10);
+  //   setNumPlayers(value);
+  // };
+  const handleNumPlayersChange = () => {
+    setNumPlayers(numPlayers);
   };
-
+  console.log(numPlayers)
+  console.log(numMeals)
   const handleNumMealsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
     setNumMeals(value);
@@ -61,7 +65,8 @@ const Settings = () => {
           onChange={handleNumMealsChange}
         />
       </label>
-    <Input/>
+    <Input value={numPlayers}  min={1}
+          max={10} label='Number of players (up to 5):' onChange={handleNumPlayersChange}/>
       <NextButton title={"starta"}   onNextClick={handleSave}/>
     </div>
   );
