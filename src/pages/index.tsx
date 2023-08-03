@@ -4,7 +4,7 @@ import Settings from '../components/game/settings';
 const HomePage = () => {
   return (
     <div>
-        <h1>swipe</h1>
+        <h1>Begin DishSwap</h1>
   <Settings />
     </div>
   );

@@ -8,13 +8,13 @@ const Settings = () => {
   const [numPlayers, setNumPlayers] = useState<number>(1);
   const [numMeals, setNumMeals] = useState<number>(1);
 
-  // const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const value = parseInt(event.target.value, 10);
-  //   setNumPlayers(value);
-  // };
-  const handleNumPlayersChange = () => {
-    setNumPlayers(numPlayers);
+  const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(event.target.value, 10);
+    setNumPlayers(value);
   };
+  // const handleNumPlayersChange = () => {
+  //   setNumPlayers(numPlayers);
+  // };
   console.log(numPlayers)
   console.log(numMeals)
   const handleNumMealsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,11 +33,11 @@ const Settings = () => {
       const mealArray = await fetchMeals(numMeals);
       console.log(mealArray)
       saveToLocalStorage('meals', mealArray);
-// mealArray.map =>
-  const nextMeal = mealArray[0];
+      // mealArray.map =>
+      const nextMeal = mealArray[0];
       console.log(nextMeal.strMeal)
 
-   window.location.href = `/game/test`;
+      window.location.href = `/game/test`;
     } catch (error) {
       console.error("Error fetching results:", error);
     }
@@ -45,7 +45,7 @@ const Settings = () => {
 
   return (
     <div>
-      <label>
+      {/* <label>
         Number of players (up to 5):
         <input
           type="number"
@@ -54,8 +54,8 @@ const Settings = () => {
           value={numPlayers}
           onChange={handleNumPlayersChange}
         />
-      </label>
-      <label>
+      </label> */}
+      {/* <label>
         Number of meals (up to 10):
         <input
           type="number"
@@ -64,10 +64,13 @@ const Settings = () => {
           value={numMeals}
           onChange={handleNumMealsChange}
         />
-      </label>
-    <Input value={numPlayers}  min={1}
-          max={10} label='Number of players (up to 5):' onChange={handleNumPlayersChange}/>
-      <NextButton title={"starta"}   onNextClick={handleSave}/>
+      </label> */}
+      <Input value={numPlayers} min={1}
+        max={5} label='Number of players (up to 5):' onChange={handleNumPlayersChange} />
+
+      <Input value={numMeals} min={1}
+        max={10} label='Number of meals (up to 10):' onChange={handleNumMealsChange} />
+      <NextButton title={"starta"} onNextClick={handleSave} />
     </div>
   );
 };
