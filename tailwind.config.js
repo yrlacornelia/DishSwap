@@ -9,6 +9,7 @@ module.exports = {
         current: 'currentColor',
         green: {
           DEFAULT: '#B4D4A1',
+          light: ' #9CC288',
         },      },
     },
   },

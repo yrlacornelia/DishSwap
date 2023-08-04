@@ -63,6 +63,7 @@ body {
   margin: 0;
   /* 1 */
   background-color: #E7EEE3;
+  color: #514F4F;
   line-height: inherit;
   /* 2 */
 }
@@ -103,6 +104,10 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
+}
+h1{
+  font-size: 2.125rem;
+  font-weight: bold;
 }
 
 /*
