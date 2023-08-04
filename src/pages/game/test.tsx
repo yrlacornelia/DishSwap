@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { loadFromLocalStorage, saveToLocalStorage } from "../../utils/LocalStorageUtils";
 import NextButton from "../../components/reusableComponents/Button";
 import { MyObject, emptyMyObject } from "../../lib/data";
-
+import Image from "next/image";
 export default function Test() {
   const [results, setResults] = useState<string[]>([]);
   const [numPlayersFinished, setNumPlayersFinished] = useState(0);
@@ -58,16 +58,19 @@ export default function Test() {
       setCurrentIndex(0); // Reset currentIndex for the next player
     }
   }, [numPlayersFinished, results]); // Add results to the dependency array
-
+// console.log(selectedObject.strMealThumb)
   return (
-    <div>
+    <div className="text-center flex flex-col gap-5 mt-10">
       <>
         {/* <p>måltid: {item.strMeal}</p> */}
-        <p>måltid: bild</p>
-        {selectedObject?.strMeal}
-        <NextButton onNextClick={handleYesClick} title={"yes"} />
+        {/* <p>måltid: </p> */}
+        <img  alt="image" src={selectedObject?.strMealThumb} width={400} height={400} className="border border-black-light border-2 rounded-3xl"/>
+      <h4>  {selectedObject?.strMeal}</h4>
+      <div className="flex justify-between">
+         <NextButton onNextClick={handleYesClick} title={"yes"} />
         <NextButton onNextClick={handleNext} title={"no"} />
-      </>
+</div>
+          </>
     </div>
   );
 }

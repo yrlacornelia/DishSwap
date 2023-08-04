@@ -23,17 +23,23 @@ const endGame = () => {
   return (
     <>
       {results.length > 0 ? (
+      <>
+          <h1>Winners</h1>
         <div>
           {results.map((result, index) => (
-            <p key={index}>{result}</p>
+            <div key={index}>        
+                 <p >{result}</p>
+                 </div>
+ 
           ))}
         </div>
+      </>
       ) : (
         <div>
           <p>No results found</p>
         </div>
       )}
-      <button >try again</button>
+      {/* <button >try again</button> */}
     </>
   );
 };

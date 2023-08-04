@@ -12,31 +12,38 @@ const Settings = () => {
   const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
     setNumPlayers(value);
-    if(value > 10) {
-      setErrorPlayers(true)
-    }
-    else {
-      setErrorPlayers(false)
-    }
   };
   // const handleNumPlayersChange = () => {
   //   setNumPlayers(numPlayers);
   // };
-  console.log(numPlayers)
-  console.log(numMeals)
+const validateMeals =() => {
+  if(numMeals > 10) {
+    setErrorMeals(true)
+  }
+  else {
+    setErrorMeals(false)
+  }
+}
+const validatePlayers =() => {
+  if(numPlayers > 5) {
+    setErrorPlayers(true)
+  }
+  else {
+    setErrorPlayers(false)
+  }
+}
   const handleNumMealsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
     setNumMeals(value);
-    if(value > 10) {
-      setErrorMeals(true)
-    }
-    else {
-      setErrorMeals(false)
-    }
   };
 
   const handleSave = async () => {
     // if()
+    validateMeals()
+    validatePlayers()
+    if(errorMeals == false && errorPlayers == false)  {
+      
+  
     const data = {
       numPlayers,
       numMeals,
@@ -54,7 +61,8 @@ const Settings = () => {
       window.location.href = `/game/test`;
     } catch (error) {
       console.error("Error fetching results:", error);
-    }
+    } 
+   }
   };
 
   return (
@@ -80,11 +88,11 @@ const Settings = () => {
         />
       </label> */}
       <div className='mb-10'>  <Input value={numPlayers} min={1}  
-      error={errorPlayers} errorMessage='hello'
+      error={errorPlayers} errorMessage='error'
         max={5} label='Number of players (up to 5):' onChange={handleNumPlayersChange} />
 
         <Input value={numMeals} min={1}    
-            error={errorMeals} errorMessage='hello'  
+            error={errorMeals} errorMessage='error'  
           max={10} label='Number of meals (up to 10):' onChange={handleNumMealsChange} />
       </div>
       <NextButton title={"START"} onNextClick={handleSave} />

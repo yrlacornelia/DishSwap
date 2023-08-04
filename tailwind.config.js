@@ -10,7 +10,12 @@ module.exports = {
         green: {
           DEFAULT: '#B4D4A1',
           light: ' #9CC288',
-        },      },
+        },   
+        black: {
+          DEFAULT: '#000000',
+          light:  '#656565'
+        }
+         },
     },
   },
   plugins: [],
