@@ -6,7 +6,7 @@ import NextButton from "../../components/reusableComponents/Button";
 import { MyObject, emptyMyObject } from "../../lib/data";
 import Image from "next/image";
 export default function Test() {
-  const [results, setResults] = useState<string[]>([]);
+  const [results, setResults] = useState<any[]>([]);
   const [numPlayersFinished, setNumPlayersFinished] = useState(0);
   const [arrayLength, setArrayLength] = useState<number>(0);
   const [myObjectArray, setMyObjectArray] = useState<MyObject[]>([]); // Provide default value here
@@ -33,7 +33,7 @@ export default function Test() {
   const selectedObject: MyObject = myObjectArray[currentIndex];
 
   const handleYesClick = () => {
-    setResults((prevResults) => [...prevResults, selectedObject?.strMeal || ""]);
+    setResults((prevResults) => [...prevResults, selectedObject || ""]);
     handleNext();
   };
 

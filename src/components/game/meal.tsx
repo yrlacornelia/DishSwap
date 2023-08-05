@@ -1,69 +1,37 @@
-// import React, { useState, useEffect } from "react";
-// import Link from 'next/link';
-// import NextButton from "./nextButton";
-// import { loadFromLocalStorage, saveToLocalStorage } from "../../utils/LocalStorageUtils";
+import React, { useState, useEffect } from "react";
+import { MyObject } from "../../lib/data";
+import { it } from "node:test";
 
-// // type Props = {
-// //   item: Meal;
-// // };
+type Props = {
+  item: MyObject;
+};
 
-// const OneMeal = () => {
-//   const [total, setTotal] = useState(0);
-//   const [resultArray, setResultArray] = useState<string[]>([]); // Array to store results
-//   const [playersFinished, setPlayersFinished] = useState(0);
+const Meal = ({item}:Props) => {
+ console.log(item)
+  return (
+    <div>
+      {/* <p>måltid: {item.strMeal}</p>
+      <p>måltid: bild</p> */}
+      <div className=" flex justify-center items-center gap-20 mb-10 mt-10">
+<img src={item.strMealThumb} alt="" width={500} height={500}/>
+<div>
+<h1>{item.strMeal}</h1>
+<h3>{item.strCategory}</h3>
+</div>
+      </div>
+<div className="flex align-center justify-center">
+   <div className="flex flex-col w-1/3 py-3 px-10">
+    <h4>intructions</h4>
 
-//   const handleNextClick = () => {
-//     setTotal(total + 1);
-//   };
+    <p>{item.strInstructions}</p>
+    </div> 
+    <div className="flex flex-col w-1/3 py-3 px-10 ">
+    <h4>Ingredients</h4>
 
-//   const handleYesClick = () => {
-//     handleNextClick()
-//     setResultArray(prevArray => [...prevArray, item.MealName]); // Add "No" to the result array
+    </div>
+</div>
+    </div>
+  );
+};
 
-//   };
-//   console.log(resultArray)
-//   const mealsString = loadFromLocalStorage('meals');
-//   const nextMeal = () => {
-//     if (mealsString && mealsString.length > 0) {
-//       const nextIndex = (total + 1) % mealsString.length;
-//       const nextMeal = mealsString[nextIndex];
-//       return nextMeal;
-//     } else {
-//       return null;
-//     }
-//   };
-
-//   useEffect(() => {
-    
-//     if (total === mealsString.length) {
-//       setPlayersFinished(playersFinished + 1);
-//       alert("Game over!")
-//       setTotal(0); // Reset total for the next player
-//     }
-//   }, [total, mealsString]);
-
-//   useEffect(() => {
-//     const players = loadFromLocalStorage('playerMealData');
-//     console.log(players.numPlayers)
-//     if (playersFinished === players.numPlayers) {
-
-//       alert("Game over!"); // Alert when all players have finished
-//       saveToLocalStorage("results",resultArray)
-//       window.location.href = `/game/endGame` }
-//   }, [playersFinished]);
-
-//   return (
-//     <div>
-//       <p>måltid: {item.MealName}</p>
-//       <p>måltid: bild</p>
-//       <Link href={`/game/${nextMeal()}`}>
-//         <NextButton onNextClick={handleYesClick} title={"yes"} />
-//       </Link>
-//       <Link href={`/game/${nextMeal()}`}>
-//         <NextButton onNextClick={handleNextClick} title={"no"} />
-//       </Link>
-//     </div>
-//   );
-// };
-
-// export default OneMeal;
+export default Meal;

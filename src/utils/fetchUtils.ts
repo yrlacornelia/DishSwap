@@ -3,7 +3,7 @@ export const fetchMeals = async (numMeals) => {
     try {
       const fetchedMeals = [];
       for (let i = 0; i < numMeals; i++) {
-        const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+        const response = await fetch();
         const data = await response.json();
         fetchedMeals.push(data.meals[0]);
  
@@ -14,4 +14,36 @@ export const fetchMeals = async (numMeals) => {
     }
   };
   
+
+  // export const fetchId = async (numMeals) => {
+  //   try {
+  //     const fetchedMeals = [];
+  //     for (let i = 0; i < numMeals; i++) {
+  //       const response = await fetch("");
+  //       const data = await response.json();
+  //       fetchedMeals.push(data.meals[0]);
+ 
+  //     }
+  //     return fetchedMeals;
+  //   } catch (error) {
+  //     throw new Error("Failed to fetch meals");
+  //   }
+  // };
   
+  export async function getProductIds() {
+ console.log("HI")
+    return 52936
+  }
+  export async function getProductData(productId) {
+    console.log(productId)
+    try {
+      // Make an API request to get the product data based on the "productId"
+      const response = await fetch(``);
+      const data = await response.json();
+  
+      return data.meals[0]
+    } catch (error) {
+      console.error(`Error fetching product data for productId ${productId}:`, error);
+      return null;
+    }
+  }

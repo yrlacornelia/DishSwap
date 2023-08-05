@@ -22,15 +22,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/game/endGame": [
+    "/game/[productId]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/game/endGame.js"
-    ],
-    "/game/test": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/game/test.js"
+      "static/chunks/pages/game/[productId].js"
     ]
   },
   "ampFirstPages": []
