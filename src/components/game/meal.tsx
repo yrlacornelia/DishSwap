@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { MyObject } from "../../lib/data";
-import { it } from "node:test";
 
 type Props = {
   item: MyObject;
 };
 
+
 const Meal = ({item}:Props) => {
- console.log(item)
+ const find = () => {
+   console.log(item)
+   const tahis = []
+for (let index = 0; index < 20; index++) {
+  const ingredient = `strIngredient${[index +1]}`
+  const mesurment = `strMeasure${[index +1]}`
+tahis.push ( item[mesurment] + item[ingredient]  )
+}
+
+   return(
+    <>
+{tahis.map((result) => (
+              <li>
+                {result}
+              </li>
+            ))}
+    </>
+   )
+}
   return (
     <div>
       {/* <p>måltid: {item.strMeal}</p>
@@ -27,7 +45,7 @@ const Meal = ({item}:Props) => {
     </div> 
     <div className="flex flex-col w-1/3 py-3 px-10 ">
     <h4>Ingredients</h4>
-
+{find()}
     </div>
 </div>
     </div>

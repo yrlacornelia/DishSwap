@@ -1,9 +1,10 @@
+import { getId } from "../pages/game/endGame";
 
 export const fetchMeals = async (numMeals) => {
     try {
       const fetchedMeals = [];
       for (let i = 0; i < numMeals; i++) {
-        const response = await fetch();
+        const response = await fetch("");
         const data = await response.json();
         fetchedMeals.push(data.meals[0]);
  
@@ -14,25 +15,9 @@ export const fetchMeals = async (numMeals) => {
     }
   };
   
-
-  // export const fetchId = async (numMeals) => {
-  //   try {
-  //     const fetchedMeals = [];
-  //     for (let i = 0; i < numMeals; i++) {
-  //       const response = await fetch("");
-  //       const data = await response.json();
-  //       fetchedMeals.push(data.meals[0]);
- 
-  //     }
-  //     return fetchedMeals;
-  //   } catch (error) {
-  //     throw new Error("Failed to fetch meals");
-  //   }
-  // };
-  
-  export async function getProductIds() {
- console.log("HI")
-    return 52936
+  export async function getProductIds(id) {
+const number = getId(id)
+    return number
   }
   export async function getProductData(productId) {
     console.log(productId)

@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { resultsUtils } from "../../utils/resultUtils";
 import { loadFromLocalStorage } from "../../utils/LocalStorageUtils";
+import { useRouter } from "next/router";
 
+export function getId(id: number) {
+console.log("HI")
+console.log(id)
+return id
+}
 const endGame = () => {
+  const [five, setfive] = useState<number>()
   const [results, setResults] = useState<any[]>([]);
+  const router = useRouter(); // Use the useRouter hook inside the functional component
+
 
   useEffect(() => {
    const players = loadFromLocalStorage('playerMealData');
@@ -20,6 +29,9 @@ const endGame = () => {
     fetchResults();
   }, []);
 console.log(results)
+const handleRouting = (id) => {
+  router.push(`/game/${id}`);
+};
   return (
     <>
       {results.length > 0 ? (
@@ -27,7 +39,7 @@ console.log(results)
           <h1 className="mb-5">Winners</h1>
         <div className="flex flex-wrap gap-5 ">
         {results.map((result) => (
-              <div key={result.idMeal} className=" w-1/3 bg-green  p-2 shadow rounded-xl py-5 flex flex-col items-center">
+              <div key={result.idMeal} onClick={() => {handleRouting(result.idMeal)}} className=" w-1/3 bg-green  p-2 shadow rounded-xl py-5 flex flex-col items-center">
                 <img className=" rounded-xl mb-5" src={result.strMealThumb} width={150} height={150}></img>
                 <div ><h4> {result.strMeal}</h4>
                 {/* <p>Category: {result.strCategory}</p> */}

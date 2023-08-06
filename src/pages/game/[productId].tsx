@@ -2,15 +2,13 @@
 
 import Meal from "../../components/game/meal";
 import { getProductData, getProductIds } from "../../utils/fetchUtils"; // Import your API functions
+import { getId } from "./endGame";
 
 // This function tells Next.js which paths should be pre-rendered
 export async function getStaticPaths() {
-
-  const productId = await getProductIds(); // Fetch the product ID from your API
-console.log(productId)
-  // Return an array containing a single object with the "params" key
+  // Since you don't need to fetch data, you can leave this function empty
   return {
-    paths: [{ params: { productId: productId.toString() } }],
+    paths: [], // This means no pre-rendered paths
     fallback: false, // fallback: false means other routes should 404
   };
 }
