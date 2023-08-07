@@ -35,12 +35,14 @@ const handleRouting = (id) => {
   return (
     <>
       {results.length > 0 ? (
-      <div className="flex flex-col w-2/4 ">
-          <h1 className="mb-5">Winners</h1>
-        <div className="flex flex-wrap gap-5 ">
+      <div className="flex flex-col w-full ">
+          <h1 className="mb-5 text-center">Winners</h1>
+        <div className="flex flex-wrap gap-5 justify-center">
         {results.map((result) => (
-              <div key={result.idMeal} onClick={() => {handleRouting(result.idMeal)}} className=" w-1/3 bg-green  p-2 shadow rounded-xl py-5 flex flex-col items-center">
-                <img className=" rounded-xl mb-5" src={result.strMealThumb} width={150} height={150}></img>
+              <div key={result.idMeal}
+               onClick={() => {handleRouting(result.idMeal)}}
+                className="w-2/3  lg:w-1/4 sm:w-1/3 bg-green p-2 px-5 shadow justify-center items-center rounded-xl py-5 flex-col flex">
+                <img className="rounded-xl mb-5" src={result.strMealThumb}></img>
                 <div ><h4> {result.strMeal}</h4>
                 {/* <p>Category: {result.strCategory}</p> */}
                 </div>
