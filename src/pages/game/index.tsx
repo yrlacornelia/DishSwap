@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react'
-import { getRandomMeal } from '../../utils/utils';
 export default function Game() {
 
 

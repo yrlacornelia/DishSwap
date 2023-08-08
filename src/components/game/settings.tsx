@@ -9,10 +9,7 @@ const Settings = () => {
   const [numMeals, setNumMeals] = useState<number>(1);
   const [errorMeals, setErrorMeals] = useState(false);
   const [errorPlayers, setErrorPlayers] = useState(false);
-  const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(event.target.value, 10);
-    setNumPlayers(value);
-  };
+  
   // const handleNumPlayersChange = () => {
   //   setNumPlayers(numPlayers);
   // };
@@ -35,6 +32,11 @@ const validatePlayers =() => {
   const handleNumMealsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
     setNumMeals(value);
+  };
+
+  const handleNumPlayersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(event.target.value, 10);
+    setNumPlayers(value);
   };
 
   const handleSave = async () => {
@@ -87,11 +89,11 @@ const validatePlayers =() => {
           onChange={handleNumMealsChange}
         />
       </label> */}
-      <div className='mb-10'>  <Input value={numPlayers} min={1}  
+      <div className='mb-10'>  <Input type='number'  value={numPlayers} min={1}  
       error={errorPlayers} errorMessage='error'
         max={5} label='Number of players (up to 5):' onChange={handleNumPlayersChange} />
 
-        <Input value={numMeals} min={1}    
+        <Input value={numMeals} min={1} type='number'   
             error={errorMeals} errorMessage='error'  
           max={10} label='Number of meals (up to 10):' onChange={handleNumMealsChange} />
       </div>

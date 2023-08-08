@@ -2,6 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/game/endGame": "pages/game/endGame.js",
-  "/game/[productId]": "pages/game/[productId].js"
+  "/profile": "pages/profile.js"
 }

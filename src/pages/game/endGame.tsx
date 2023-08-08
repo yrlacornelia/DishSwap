@@ -9,7 +9,6 @@ console.log(id)
 return id
 }
 const endGame = () => {
-  const [five, setfive] = useState<number>()
   const [results, setResults] = useState<any[]>([]);
   const router = useRouter(); // Use the useRouter hook inside the functional component
 

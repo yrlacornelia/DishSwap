@@ -1,17 +1,18 @@
 import React from "react";
 
 interface Props {
-    label: string;
-    value: number;
-    min: number;
-    max:number;
-     error: boolean;
-     errorMessage: string;
+    label?: string;
+    value?: number | string ,
+    min?: number,
+    max?:number;
+     error?: boolean;
+     errorMessage?: string;
+     type: string;
     // onChange: (value: number) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   }
 
-const Input = ({ label,min, max, value, error, errorMessage, onChange }:Props) => {
+const Input = ({ label,min, max, value, error, errorMessage, onChange, type }:Props) => {
   
     return ( 
     <div className="flex flex-col " >
@@ -21,7 +22,7 @@ const Input = ({ label,min, max, value, error, errorMessage, onChange }:Props) =
         <input
           required
     className="flex flex-col w-full p-2"
-          type="number"
+          type={type}
           min={min}
           max={max}
           value={value}
