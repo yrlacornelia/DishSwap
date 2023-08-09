@@ -12,6 +12,11 @@
   ],
   "rootMainFiles": [],
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -22,10 +27,30 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/friends": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/friends.js"
+    ],
+    "/likes": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/likes.js"
+    ],
     "/profile": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/profile.js"
+    ],
+    "/profile/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/profile/login.js"
+    ],
+    "/profile/signup": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/profile/signup.js"
     ]
   },
   "ampFirstPages": []

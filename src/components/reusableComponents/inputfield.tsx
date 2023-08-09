@@ -15,11 +15,10 @@ interface Props {
 const Input = ({ label,min, max, value, error, errorMessage, onChange, type }:Props) => {
   
     return ( 
-    <div className="flex flex-col " >
-
-        <label className="py-2 gap-1 flex flex-col">
+    <div className="flex flex-col" >
+        <label className="py-2 gap-1 flex flex-col ">
        {label}
-        <input
+        <input size={30}
           required
     className="flex flex-col w-full p-2"
           type={type}
@@ -32,7 +31,9 @@ const Input = ({ label,min, max, value, error, errorMessage, onChange, type }:Pr
         />
           {error && <p className="text-red-600">{errorMessage}</p>}
       </label>
+      
     </div> );
 }
  
 export default Input;
+

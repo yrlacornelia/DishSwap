@@ -1,39 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import SignUp from '../../components/profile/signUp'
-import Login from '../../components/profile/logIn'
-import Logout from '../../components/profile/logOut'
+import React, { use, useEffect, useState } from 'react'
 import MyProfile from '../../components/profile/myProfile'
-import { fetchUserInfo } from '../../utils/services'
-import { auth } from '../../firebaseConfig'
+import { useRouter } from 'next/router';
+import { useUserAuth } from '../../utils/services';
 export default function Profile() {
-  const [userInfo, setUserInfo] = useState(null);
-
+  const router = useRouter();
+  const {user}  = useUserAuth();
   useEffect(() => {
-    const getUserInfo = async () => {
-      const uid = await fetchUserInfo(); // No argument needed
-      if (uid) {
-        console.log(uid)
-        setUserInfo(uid);
-      }
-    };
-
-    getUserInfo();
-  }, []);
-console.log(userInfo)
+    if (!user ) {
+      router.push('/profile/login'); 
+    }
+    else{
+          console.log("no")
+    }
+  }, [user]);
+  console.log(user)
   return (
-    <div>
- {userInfo ? (
-        <>
-          <MyProfile />
-        </>
-      ) : (
-        <>      
-        <SignUp />
-        <Login/>
-        </>
 
-      )}
-   
-    </div>
+    <>
+      {user ? (
+        <MyProfile />) :
+        (<><p>loading</p></>)
+        }
+    </>
+
+
   )
 }

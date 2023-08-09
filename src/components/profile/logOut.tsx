@@ -1,12 +1,20 @@
+import { useRouter } from "next/router";
+import { useUserAuth } from "../../utils/services";
 import NextButton from "../reusableComponents/Button";
-import { handleLogOut } from "../../utils/services";
 const Logout = () => {
-const out = () => {
-handleLogOut()
-
-}
+    const { logOut, user } = useUserAuth();
+    const router = useRouter();
+    const handleLogout = async () => {
+      try {
+        await logOut();
+        router.push('/login'); 
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
     return ( 
-        <NextButton onNextClick={out} title={"logout"}/>
+        <NextButton onNextClick={handleLogout} title={"logout"}/>
+        
      );
 }
  
