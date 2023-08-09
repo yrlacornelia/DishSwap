@@ -2,10 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/profile/login": "pages/profile/login.js",
   "/": "pages/index.js",
-  "/profile/signup": "pages/profile/signup.js",
-  "/likes": "pages/likes.js",
-  "/profile": "pages/profile.js",
-  "/friends": "pages/friends.js"
+  "/game/[productId]": "pages/game/[productId].js",
+  "/game/test": "pages/game/test.js"
 }
