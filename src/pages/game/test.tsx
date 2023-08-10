@@ -5,6 +5,7 @@ import { loadFromLocalStorage, saveToLocalStorage } from "../../utils/LocalStora
 import NextButton from "../../components/reusableComponents/Button";
 import { MyObject, emptyMyObject } from "../../lib/data";
 import Image from "next/image";
+import IconButton from "../../components/reusableComponents/iconButton";
 
 export default function Test() {
   const [results, setResults] = useState<any[]>([]);
@@ -53,15 +54,20 @@ export default function Test() {
     }
   }, [currentIndex, arrayLength]);
   return (
-    <div className="text-center m-20 flex flex-col gap-5 mt-10">
-      <>
-        <img  alt="image" src={selectedObject?.strMealThumb} width={400} height={400} className="border border-black-light border-2 rounded-3xl"/>
-      <h4>  {selectedObject?.strMeal}</h4>
-      <div className="flex justify-between">
-         <NextButton onNextClick={handleYesClick} title={"yes"} />
-        <NextButton onNextClick={handleNext} title={"no"} />
-</div>
-          </>
-    </div>
+  <div className="m-20 p-10 flex flex-col mt-10 gap-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
+    <img  alt="image" src={selectedObject?.strMealThumb} width={400} height={400} className="border rounded-md"/>
+    <div>    <h4>  {selectedObject?.strMeal}</h4>
+    <p>{selectedObject?.strCategory}</p></div>
+    <div className="flex justify-between mt-2">
+      <IconButton  label={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" className="w-10 h-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg>
+} onClick={handleNext}/>
+      <IconButton label={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" className="w-10 h-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+</svg>
+} onClick={handleYesClick} />
+      </div>
+      </div>
   );
 }

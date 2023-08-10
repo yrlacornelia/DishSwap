@@ -6,7 +6,7 @@ const NextButton =({ onNextClick, title }) => {
 
   return (
     <div className='flex justify-center '>
-      <button onClick={onNextClick} className="bg-green hover:bg-green-light font-bold py-2 px-10 rounded-lg rounded w-56"
+      <button onClick={onNextClick} className="bg-blue text-white hover:bg-blue-hover font-bold py-2 px-10 rounded-sm rounded w-56"
    >
         {title}
       </button>

@@ -11,7 +11,7 @@ interface TabPanelProps {
 }
 type BasicTabsProps = {
     instructions: string;
-    ingredients: string; // Change the type to string
+    ingredients: any; // Change the type to string
   };
   
 function CustomTabPanel(props: TabPanelProps, ) {
@@ -20,13 +20,14 @@ function CustomTabPanel(props: TabPanelProps, ) {
   return (
     <div
       role="tabpanel"
+      className='w-1/2'
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box  sx={{ p:3}}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -49,11 +50,11 @@ export default function BasicTabs({instructions, ingredients}:BasicTabsProps) {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{  }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Instructions" {...a11yProps(0)} />
-          <Tab label="Ingredients" {...a11yProps(1)} />
+          <Tab className='w-1/2' label="Instructions" {...a11yProps(0)} />
+          <Tab className='w-1/2'  label="Ingredients" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>

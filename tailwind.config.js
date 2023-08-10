@@ -14,6 +14,15 @@ module.exports = {
         black: {
           DEFAULT: '#000000',
           light:  '#656565'
+        },
+        blue: {
+          DEFAULT: '#3D5D64',
+          hover: '#44656C',
+          light: '#D4DED5',
+          lighter: '#D5D4D1'
+        },
+        white: {
+          DEFAULT: '#D9D9D9'
         }
          },
     },

@@ -15,7 +15,7 @@ interface Props {
 const Input = ({ label,min, max, value, error, errorMessage, onChange, type }:Props) => {
   
     return ( 
-    <div className="flex flex-col" >
+    <div className="flex flex-col w-80" >
         <label className="py-2 gap-1 flex flex-col ">
        {label}
         <input size={30}

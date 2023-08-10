@@ -84,7 +84,7 @@ const validatePlayers =() => {
     setVegetarian(event.target.checked);
   };
   return (
-    <div className='w-full'>
+    <div className='w-full flex items-center flex-col'>
       <div className='mb-10'>  <Input type='number'  value={numPlayers} min={1}  
       error={errorPlayers} errorMessage='error'
         max={5} label='Number of players (up to 5):' onChange={handleNumPlayersChange} />
