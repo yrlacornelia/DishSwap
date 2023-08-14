@@ -33,6 +33,9 @@ console.log(results)
 const handleRouting = (id) => {
   router.push(`/game/${id}`);
 };
+const handleNextClick = () => {
+  router.push(`/`)
+}
   return (
     <>
       {results.length > 0 ? (
@@ -44,11 +47,10 @@ const handleRouting = (id) => {
          
         <div className="flex flex-wrap md:gap-10 justify-center ">
         {results.map((result) => (
-              <div key={result.idMeal}
-               onClick={() => {handleRouting(result.idMeal)}}
-                className="md:w-1/2 hover:scale-105 cursor-pointer duration-200 sm:w-3/4 m-2 lg:w-1/3 md:m-0 w-full shadow-lg bg-blue-lighter items-center rounded-md  gap-5 flex">
+              <div key={result.idMeal} onClick={() => {handleRouting(result.idMeal)}}
+                className="md:w-1/2 md:hover:scale-105 cursor-pointer md:duration-200 sm:w-3/4 m-2 lg:w-1/3 md:m-0 w-full shadow-lg bg-blue-lighter items-center rounded-md  gap-5 flex">
                 <img className="rounded-l-md" src={result.strMealThumb} width={150} height={150}></img>
-                <div className="w-full  h-2/3 justify-between flex flex-col  mb-0 mt-auto">
+                <div className="w-full  justify-between flex flex-col  mb-0 mt-auto">
                  <div>
                   <h4> {result.strMeal}</h4>
                 <p> {result.strCategory}</p></div>
@@ -68,8 +70,11 @@ const handleRouting = (id) => {
      
       </>
       ) : (
-        <div>
-          <p>No results found</p>
+        <div className="justify-center flex flex-col m-auto gap-2 items-center mt-20 w-3/4">
+         <div className="mb-5">
+          <h4>Too bad!</h4>
+          <p>You didnt find any of of the same meals interesting</p></div>
+          <NextButton title={"TRY AGAIN"} onNextClick={handleNextClick}/>
         </div>
       )}
       {/* <button >try again</button> */}

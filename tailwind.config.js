@@ -22,7 +22,9 @@ module.exports = {
           lighter: '#D5D4D1'
         },
         white: {
-          DEFAULT: '#D9D9D9'
+          DEFAULT: '#D9D9D9',
+          light: '#FFFFFF'
+
         }
          },
     },

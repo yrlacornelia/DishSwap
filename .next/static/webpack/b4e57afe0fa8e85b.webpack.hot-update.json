@@ -1,0 +1,1 @@
+{"c":["webpack"],"r":["pages/index"],"m":["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=%2FUsers%2Fyrlahackzell%2FDesktop%2Fsommarprojekt%2FDishSwap%2Fsrc%2Fpages%2Findex.tsx&page=%2F!","./src/components/game/settings.tsx","./src/components/reusableComponents/inputfield.tsx","./src/pages/index.tsx","./src/utils/fetchUtils.ts"]}

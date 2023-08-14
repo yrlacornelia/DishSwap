@@ -54,7 +54,7 @@ export default function Test() {
     }
   }, [currentIndex, arrayLength]);
   return (
-  <div className="m-20 p-10 flex flex-col mt-10 gap-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
+  <div className="m-20 p-10 flex flex-col m-auto justify-center mt-10 gap-2 w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
     <img  alt="image" src={selectedObject?.strMealThumb} width={400} height={400} className="border rounded-md"/>
     <div>    <h4>  {selectedObject?.strMeal}</h4>
     <p>{selectedObject?.strCategory}</p></div>

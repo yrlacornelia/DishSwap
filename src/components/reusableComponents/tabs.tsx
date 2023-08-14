@@ -1,69 +1,57 @@
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import { TabsBodyProps } from '@material-tailwind/react';
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
+ ingredients: any,
+ instructions: any,
 }
-type BasicTabsProps = {
-    instructions: string;
-    ingredients: any; // Change the type to string
-  };
-  
-function CustomTabPanel(props: TabPanelProps, ) {
-  const { children, value, index, ...other } = props;
+export default function LabTabs({ingredients, instructions}: TabPanelProps) {
+  const [value, setValue] = React.useState('1');
 
-  return (
-    <div
-      role="tabpanel"
-      className='w-1/2'
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box  sx={{ p:3}}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-export default function BasicTabs({instructions, ingredients}:BasicTabsProps) {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{  }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab className='w-1/2' label="Instructions" {...a11yProps(0)} />
-          <Tab className='w-1/2'  label="Ingredients" {...a11yProps(1)} />
-        </Tabs>
-      </Box>
-      <CustomTabPanel value={value} index={0}>
-      {instructions}
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-     {ingredients}
-      </CustomTabPanel>
-
+    <>    <div className='md:hidden'>
+      
+    <Box sx={{ width: '100%', typography: 'body1', backgroundColor:"#E7EEE3"}}>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <TabList
+            onChange={handleChange}
+            style={{ display: 'flex', width: '100%', backgroundColor:"" }} // Added width to TabList
+            aria-label="lab API tabs example"
+          >
+            <Tab style={{ flex: 1, margin:"auto" }} label="Instructions" value="1" /> {/* Removed width, added flex */}
+            <Tab style={{ flex: 1, margin:"auto"}}  label="Ingredients" value="2" /> {/* Removed width, added flex */}
+          </TabList>
+        </Box>
+        <div className='bg-white-light'>
+        <TabPanel value="1"> <div className='px-5 py-4'>{instructions}</div></TabPanel>
+        <TabPanel value="2"> <div className='px-5 py-4'>{ingredients}</div></TabPanel></div>
+      </TabContext>
     </Box>
+  </div>
+  <div className='hidden md:flex justify-center gap-8'>
+    <div className='w-1/2 py-4 px-8' >
+      <h4 className='mb-3'>Directions</h4>
+    {instructions}</div>
+    
+    <div className='bg-white-light py-4 px-20 h-96 min-h-min'>
+    <h4 className='mb-3'>Ingredients</h4>
+    {ingredients}</div>
+
+  </div>
+  
+  </>
+
+  
+
   );
+
 }
