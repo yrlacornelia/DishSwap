@@ -11,9 +11,6 @@ const Settings = () => {
   const [errorPlayers, setErrorPlayers] = useState(false);
   const [vegetarian, setVegetarian] = useState(false);
   
-  // const handleNumPlayersChange = () => {
-  //   setNumPlayers(numPlayers);
-  // };
 const validateMeals =() => {
   if(numMeals > 10) {
     setErrorMeals(true)
@@ -65,8 +62,10 @@ const validatePlayers =() => {
         console.error("Error fetching results:", error);
       } 
     }
-    else { try {
+    else { 
+      try {
      
+      console.log(numMeals)
       const mealArray = await fetchMeals(numMeals);
       console.log(mealArray)
       saveToLocalStorage('meals', mealArray);

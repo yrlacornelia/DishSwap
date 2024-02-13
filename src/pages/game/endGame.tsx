@@ -4,6 +4,7 @@ import { loadFromLocalStorage } from "../../utils/LocalStorageUtils";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import NextButton from "../../components/reusableComponents/Button";
+import { getProductData } from "../../utils/fetchUtils";
 
 export function getId(id: number) {
 console.log("HI")
@@ -12,7 +13,7 @@ return id
 }
 const endGame = () => {
   const [results, setResults] = useState<any[]>([]);
-  const router = useRouter(); // Use the useRouter hook inside the functional component
+  const router = useRouter(); 
 
 
   useEffect(() => {
@@ -31,11 +32,12 @@ const endGame = () => {
   }, []);
 console.log(results)
 const handleRouting = (id) => {
-  router.push(`/game/${id}`);
+  const data = getProductData(id)
+  router.push(`/game/${data}`);
 };
-const handleNextClick = () => {
-  router.push(`/`)
-}
+// const handleNextClick = () => {
+//   router.push(`/`)
+// }
   return (
     <>
       {results.length > 0 ? (
@@ -47,14 +49,16 @@ const handleNextClick = () => {
          
         <div className="flex flex-wrap md:gap-10 justify-center ">
         {results.map((result) => (
-              <div key={result.idMeal} onClick={() => {handleRouting(result.idMeal)}}
-                className="md:w-1/2 md:hover:scale-105 cursor-pointer md:duration-200 sm:w-3/4 m-2 lg:w-1/3 md:m-0 w-full shadow-lg bg-blue-lighter items-center rounded-md  gap-5 flex">
-                <img className="rounded-l-md" src={result.strMealThumb} width={150} height={150}></img>
+              <div key={result.idMeal} 
+              // onClick={() => {handleRouting(result.idMeal)}}
+                className="cursor-pointer m-2 w-full shadow-lg bg-blue-light items-center rounded-md  gap-5 flex flex-col">
+             <img className="w-full h-40 rounded-t-md object-cover" src={result.strMealThumb} alt={result.strMeal} />
                 <div className="w-full  justify-between flex flex-col  mb-0 mt-auto">
-                 <div>
+                 <div className="px-5">
                   <h4> {result.strMeal}</h4>
                 <p> {result.strCategory}</p></div>
-                <Link className="flex gap-1 mb-3 mr-3 items-center justify-end" href={"/endGame"}><p className="underline">Go to recipe</p> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
+                
+                <Link className="flex gap-1 mb-3 mr-3 items-center justify-end" href={`/game/recipe?number=${result.idMeal}`}><p className="underline">Go to recipe</p> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
 </svg>
 </Link>
@@ -74,7 +78,7 @@ const handleNextClick = () => {
          <div className="mb-5">
           <h4>Too bad!</h4>
           <p>You didnt find any of of the same meals interesting</p></div>
-          <NextButton title={"TRY AGAIN"} onNextClick={handleNextClick}/>
+          {/* <NextButton title={"TRY AGAIN"} /> */}
         </div>
       )}
       {/* <button >try again</button> */}

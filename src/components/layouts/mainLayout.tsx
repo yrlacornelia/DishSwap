@@ -4,7 +4,8 @@ import Example from "./Navbar";
 const Layout = ({ children }: any) => {
   return (
     <>
-      {/* <NavBar /> */}
+   
+
       <div className=""> 
       {children}
       </div>
