@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/game/testSwipe": "pages/game/testSwipe.js",
-  "/game/test": "pages/game/test.js"
+  "/game/test": "pages/game/test.js",
+  "/game/endGame": "pages/game/endGame.js",
+  "/": "pages/index.js"
 }

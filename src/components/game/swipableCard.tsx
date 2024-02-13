@@ -1,9 +1,9 @@
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
+import { useState } from 'react';
 
-export const SwipableCard = ({ image, color }) => {
+export const SwipableCard = ({ image, heading, description }) => {
     const motionValue = useMotionValue(0);
     const rotateValue = useTransform(motionValue, [-200, 200], [-50, 50]);
-
     const opacityValue = useTransform(
         motionValue,
         [-200, -150, 0, 150, 200],
@@ -11,39 +11,41 @@ export const SwipableCard = ({ image, color }) => {
     );
 
     const animControls = useAnimation();
-
-    const style = {
-        backgroundImage: `url(${image})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
-        boxShadow: '5px 10px 18px #888888',
-        borderRadius: 10,
-        height: 160,
-
-    };
-
     return (
         <div>
+
             <motion.div
                 drag='x'
                 style={{
-                    ...style,
-                    x: motionValue,       
+                    x: motionValue,
                     rotate: rotateValue,
                     opacity: opacityValue,
-                    userSelect: 'none' 
+                    userSelect: 'none'
                 }}
                 dragConstraints={{ left: -1000, right: 1000 }}
                 onDragEnd={(event, info) => {
-                  if (Math.abs(info.point.x) <= 150) {
-                      animControls.start({ x: 0 });
-                  } else {
-                      animControls.start({ x: info.point.x < 0 ? -200 : 200 });
-                  }
-              }}
-         
-            />
-        </div>)
-}
+                    if (Math.abs(info.point.x) <= 150) {
+                        animControls.start({ x: 0 });
  
-export default Card;
+                    } else {
+                        animControls.start({ x: info.point.x < 0 ? -200 : 200 });
+          
+                    }
+                    if (Math.abs(info.point.x) >= 200) {
+                      console.log()
+                    }
+                
+                }}
+
+            >
+                <img alt="image" src={image} width={400} height={400} className="border rounded-md" />
+                <div>
+                    <h4>{heading}</h4>
+                    <p>{description}</p>
+                </div>
+            </motion.div>
+        </div>
+    );
+}
+
+export default SwipableCard;
