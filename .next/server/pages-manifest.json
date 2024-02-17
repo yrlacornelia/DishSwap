@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/game/test": "pages/game/test.js",
-  "/game/endGame": "pages/game/endGame.js",
   "/": "pages/index.js"
 }

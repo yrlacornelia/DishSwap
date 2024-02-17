@@ -32,7 +32,7 @@ export const SwipableCard = ({ image, heading, description }) => {
           
                     }
                     if (Math.abs(info.point.x) >= 200) {
-                      console.log()
+                      console.log("gone")
                     }
                 
                 }}
