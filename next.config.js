@@ -4,4 +4,7 @@ module.exports = {
     // Enable React strict mode compatibility
     reactStrictMode: true,
   },
+  images: {
+    domains: ['reactnative.dev'],
+  },
 };

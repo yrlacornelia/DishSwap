@@ -34,19 +34,25 @@ const RecipePage = () => {
             array.push(ingredientText);
     
         }
-        const filteredArray = array.filter(item => item !== "");
-
+        const filteredArray = array.filter(item => item !== 'null');
+console.log(filteredArray)
         return (<ul >{filteredArray.map ((item) =>(<li className="mb-2   ">{item}</li>))}</ul>);
+      }
+      const handleButtonClick = () => {
+        router.push('/game/endGame');
       };
+    
     return (
         <div className=''>
-              {/* <button className="border border-blue flex  gap-2 rounded-md px-5 items-center py-2 hover:bg-blue-light"> 
-        <Link  href={"/game/endGame"}>
+            <button 
+      className="border absolute border-blue flex z-30 gap-2 top-2 left-2 rounded-md px-5 items-center py-2 hover:bg-blue-light"
+      onClick={handleButtonClick}
+    > 
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-</svg>
-</Link> 
-<p>Go back</p></button> */}
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+      </svg>
+      <p>Go back</p>
+    </button>
             {loading ? ( // Check if loading is true
                 <p>Loading...</p>
             ) : myObjectArray && myObjectArray.length > 0 ? ( // Check if myObjectArray is not empty

@@ -3,7 +3,7 @@
 
 export interface MyObject {
     dateModified: null | string;
-    idMeal: null | string;
+    idMeal: null | number;
     strArea: null | string;
     strCategory: string;
     strCreativeCommonsConfirmed: null | string;

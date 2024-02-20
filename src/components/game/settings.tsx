@@ -57,7 +57,7 @@ const validatePlayers =() => {
         const nextMeal = mealArray[0];
         console.log(nextMeal.strMeal)
 
-      window.location.href = `/game/test`;
+      window.location.href = `/game`;
       } catch (error) {
         console.error("Error fetching results:", error);
       } 
@@ -72,7 +72,7 @@ const validatePlayers =() => {
       const nextMeal = mealArray[0];
       console.log(nextMeal.strMeal)
 
-      window.location.href = `/game/test`;
+      window.location.href = `/game`;
     } catch (error) {
       console.error("Error fetching results:", error);
     } }
