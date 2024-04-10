@@ -1,12 +1,10 @@
-import NavBar from "./Navbar";
+
 import React from "react";
-import Example from "./Navbar";
-const Layout = ({ children }: any) => {
+const Layout = ({ children, bgColor }: any) => {
+  const defaultBgColor = "bg-green-light";
   return (
     <>
-   
-
-      <div className=""> 
+  <div className={`${bgColor || defaultBgColor} min-h-screen`}>
       {children}
       </div>
   

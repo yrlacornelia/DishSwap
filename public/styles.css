@@ -61,11 +61,9 @@ html {
 
 body {
   margin: 0;
-  /* 1 */
   background-color: #E7EEE3;
   color: #514F4F;
   line-height: inherit;
-  /* 2 */
 }
 
 /*

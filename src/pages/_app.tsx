@@ -1,15 +1,16 @@
 import "../../public/styles.css"
 import type { AppProps } from 'next/app'
  import Layout from '../components/layouts/mainLayout';
-import RecipePage from "./game/recipe";
 //import { UserAuthContextProvider } from "../utils/services";
 import { usePathname } from 'next/navigation';
 
 export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
+  const bgColor = pathname === "/" ? "bg-green-dark" : "bg-white";
   return(
-    <Layout>
-   {pathname != "/game/recipe" &&      <div className='p-10 flex justify-between'>
+    <Layout bgColor ={bgColor}>
+   
+   {pathname != "/game/recipe" &&  <div className='p-10 flex justify-between'>
         <h4>DishSwap</h4>
         <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_264_52)">

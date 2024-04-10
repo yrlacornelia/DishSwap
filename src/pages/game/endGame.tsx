@@ -41,28 +41,27 @@ const endGame = () => {
     <>
       {results.length > 0 ? (
         <>
-          <div className="flex flex-col md:w-full xl:w-4/5   ">
+          <div className="  ">
             <div className="mb-5 text-center   ">
               <h2 className="  ">CONGRATULATIONS!</h2>
               <p>You agreed on these meals:</p></div>
-
-            <div className="flex flex-wrap md:gap-10 justify-center ">
+  
+<div className="grid grid-cols-2 gap-4 m-8">
               {results.map((result) => (
-                <div key={result.idMeal}
-                  // onClick={() => {handleRouting(result.idMeal)}}
-                  className="cursor-pointer m-2 w-full shadow-lg bg-blue-light items-center rounded-md  gap-5 flex flex-col">
-                  <img className="w-full h-40 rounded-t-md object-cover" src={result.strMealThumb} alt={result.strMeal} />
+                <a href={`/game/recipe?number=${result.idMeal}`} key={result.idMeal}
+                  className="cursor-pointer m-2 w-full  items-center   gap-5 flex flex-col">
+                  <img className="w-full h-40 object-cover" src={result.strMealThumb} alt={result.strMeal} />
                   <div className="w-full  justify-between flex flex-col  mb-0 mt-auto">
-                    <div className="px-5">
+                    <div className="px-0">
                       <h4> {result.strMeal}</h4>
                       <p> {result.strCategory}</p></div>
 
-                    <Link className="flex gap-1 mb-3 mr-3 items-center justify-end" href={`/game/recipe?number=${result.idMeal}`}><p className="underline">Go to recipe</p> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
+                    {/* <Link className="flex gap-1 mb-3 mr-3 items-center justify-end" href={`/game/recipe?number=${result.idMeal}`}><p className="underline">Go to recipe</p> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                    </Link>
+                    </Link> */}
                   </div>
-                </div>
+                </a>
               ))}
             </div>
             <div className="flex flex-col items-center mt-10 gap-2">

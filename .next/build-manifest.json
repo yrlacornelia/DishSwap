@@ -37,10 +37,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/game/endGame.js"
     ],
-    "/game/test": [
+    "/game/recipe": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/game/test.js"
+      "static/chunks/pages/game/recipe.js"
     ]
   },
   "ampFirstPages": []

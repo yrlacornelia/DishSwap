@@ -1,6 +1,10 @@
 import { getId } from "../pages/game/endGame";
 // https://www.themealdb.com/api/json/v1/1/random.php
 //https://www.themealdb.com/api/json/v1/1/lookup.php?i=${productId}
+
+//alla categegorier
+// sökväg kategorier 
+// sök ?? 
 export const fetchMeals = async (numMeals) => {
     try {
       const fetchedMeals = [];
@@ -9,7 +13,6 @@ export const fetchMeals = async (numMeals) => {
         const data = await response.json();
    console.log(data)
         fetchedMeals.push(data.meals[0]);
- 
       } 
         console.log(fetchedMeals)
       return fetchedMeals;

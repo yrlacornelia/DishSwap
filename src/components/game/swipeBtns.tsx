@@ -14,10 +14,10 @@ export default function SwipeButton({
     removeCard(id, action);
   };
   return (
-    <div className="flex items-center z-30 justify-between bottom-0 space-x-40 absolute  ">
+    <div className="flex items-center z-30 space-x-28 mt-96 absolute">
       <button
         onClick={() => handleSwipe('left')}
-        className="w-20 h-20 rounded-full  flex justify-center items-center
+        className="w-20 h-20 mt-10 rounded-full flex justify-center items-center
         border border-blue-light "    >
  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="red" className="w-10 h-10">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -25,7 +25,7 @@ export default function SwipeButton({
       </button>
       <button
         onClick={() => handleSwipe('right')}
-        className="w-20 h-20 rounded-full  flex justify-center items-center
+        className="w-20 h-20 rounded-full mt-10 flex justify-center items-center
         border border-blue-light "       >
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="green" className="w-10 h-10">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />

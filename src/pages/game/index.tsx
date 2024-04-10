@@ -13,6 +13,11 @@ export default function Swiping() {
   const [leftSwipe, setLeftSwipe] = useState(0);
   const [round, setRound] = useState(1); 
   
+  const loadPlayers = () => {
+    const players = loadFromLocalStorage("playerMealData") || { numPlayers: 0 };
+    return players.numPlayers;
+  };
+  
   const loadCards = () => {
     if(round >= maxRounds){
       saveToLocalStorage("results", results);
@@ -22,56 +27,78 @@ export default function Swiping() {
     const localStorageArray = loadFromLocalStorage("meals") || [];
     setCards(localStorageArray);}
   };
-  const loadPlayers = () => {
-    const players = loadFromLocalStorage("playerMealData") || { numPlayers: 0 };
-    return players.numPlayers;
-  };
 
   const maxRounds = loadPlayers();
+
   useEffect(() => {
     loadCards();
   }, []);
+
+  useEffect(() => {
+    saveToLocalStorage("results", results); // Update local storage whenever results change
+  }, [results]); 
+
   const activeIndex = cards.length - 1;
+
+
+  // const removeCard = (id: number, action: 'right' | 'left') => {
+  //   const selectedObject = cards.find(card => card.idMeal === id);
+
+  //   const isLastCard = cards.length === 1;
+  //   setCards((prev) => prev.filter((card) => card.idMeal !== id));
+  //   if (action === 'right') {
+  //     if (selectedObject) {
+  //       console.log(selectedObject.strArea)
+  //       setResults((prevResults) => [...prevResults, selectedObject]);
+  //     }
+  //     setRightSwipe((prev) => prev + 1);
+  //   } else {
+  //     setLeftSwipe((prev) => prev + 1);
+  //   }
+  //   if (isLastCard) {
+  //     setTimeout(() => {
+  //       if (round <= maxRounds) {
+  //         setRound((prevRound) => prevRound + 1);
+  //         loadCards(); 
+      
+  //       } else {
+  // }
+  //     }, 1000); 
+  //   }
+  // }; 
   const removeCard = (id: number, action: 'right' | 'left') => {
     const selectedObject = cards.find(card => card.idMeal === id);
     const isLastCard = cards.length === 1;
-    setCards((prev) => prev.filter((card) => card.idMeal !== id));
+  
+    setCards(prev => prev.filter(card => card.idMeal !== id));
+  
     if (action === 'right') {
-      setRightSwipe((prev) => prev + 1);
       if (selectedObject) {
-        setResults((prevResults) => [...prevResults, selectedObject]);
+        setResults(prevResults => {
+          return [...prevResults, selectedObject];
+        });
+        saveToLocalStorage("results", [...results, selectedObject]);
+        console.log(results)
+      } else {
+        console.log("No selected object found!");
       }
+      setRightSwipe(prev => prev + 1);
     } else {
-      setLeftSwipe((prev) => prev + 1);
+      setLeftSwipe(prev => prev + 1);
     }
-    if (isLastCard) {
-      // Use a timeout to ensure the state has updated and to allow for the swipe animation to complete
-      setTimeout(() => {
-        if (round <= maxRounds) {
-          setRound((prevRound) => prevRound + 1);
-          loadCards(); 
-      
-        } else {
-  }
-      }, 1000); // Adjust timeout duration as needed based on your animation speed
+  
+    if (isLastCard && round <= maxRounds) {
+      setTimeout(() => { 
+      setRound(prevRound => prevRound + 1);
+      loadCards(); }, 1000); 
     }
-  }; 
-
-  const stats = [
-    {
-      name: 'Left',
-      count: leftSwipe,
-    },
-    {
-      name: 'Right',
-      count: rightSwipe,
-    },
-  ];
+  };
+  
+  
   return (
-    <div className="relative flex h-screen w-full  items-center justify-center overflow-clip text-textGrey">
-      <div className="absolute bottom-0 h-[50%] w-screen scale-125 sm:h-[80%] sm:scale-110 md:scale-100">
+    <div className="relative flex h-screen w-full justify-center overflow-clip text-textGrey">
 
-      </div>
+<div>Player {round}</div>
       <AnimatePresence>
         {cards.length ? (
           cards.map((card, index) => (
@@ -87,11 +114,13 @@ export default function Swiping() {
             <div className="absolute z-10 text-center text-2xl font-bold text-textGrey">
               No more cards. Thank you for playing!
             </div>
-          ) : (
-            <div>Player {round + 1}</div>
+          ) 
+          : (
+            <div></div>
           )
         }
       </AnimatePresence>
+      
     </div>
   );
 }
